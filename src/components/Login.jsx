@@ -1,18 +1,55 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { theme } from "@/components";
 import { FaFacebook } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true); // Add loading state
 
+  // Check if the user is already logged in
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      router.push("/"); // Redirect to dashboard if logged in
+    } else {
+      setLoading(false); // Set loading to false once the check is complete
+    }
+  }, [router]);
+
+  // Handle login form submission
   const handleLogin = (e) => {
     e.preventDefault();
-    // Add login logic here
+
+    // Valid credentials
+    const validEmails = [
+      "cbs@gmail.com",
+      "ankitbkana@outlook.com",
+      "abcd@bits-pilani.ac.in",
+      "abcd@goa.bits-pilani.ac.in",
+      "abcd@dubai.bits-pilani.ac.in",
+      "abcd@hyd.bits-pilani.ac.in",
+    ];
+
+    if (validEmails.includes(email) && password === "1234") {
+      toast.success("Successfully logged in!");
+
+      // Set token and user email in localStorage
+      localStorage.setItem("authToken", "mockToken123");
+      localStorage.setItem("userEmail", email); // Store the user's email
+
+      // Redirect to the dashboard
+      router.push("/");
+    } else {
+      toast.error("Invalid email or password");
+    }
   };
 
   const styles = {
@@ -21,15 +58,13 @@ const Login = () => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      
       color: "#fff",
       padding: "20px",
       textAlign: "center",
-      
-      maxWidth:'333px',
-      background:'rgba(0,0,0,0.6)',
-      backdropFilter:'blur(5px)',
-       boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
+      maxWidth: "333px",
+      background: "rgba(0,0,0,0.6)",
+      backdropFilter: "blur(5px)",
+      boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
     },
     input: {
       width: "100%",
@@ -39,6 +74,7 @@ const Login = () => {
       borderRadius: "5px",
       border: "1px solid #ccc",
       fontSize: "16px",
+      color: "black",
     },
     button: {
       width: "100%",
@@ -65,13 +101,11 @@ const Login = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-
       borderRadius: "50%",
       backgroundColor: "#fff",
       color: "blue",
       cursor: "pointer",
       fontSize: "27px",
-
       boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
       transition: "0.3s ease-in-out",
     },
@@ -80,8 +114,10 @@ const Login = () => {
     },
   };
 
+  if (loading) return null; // Don't render anything while loading
+
   return (
-    <div className="flex justify-center items-center min-h-[90vh]" >
+    <div className="flex justify-center items-center min-h-[90vh]">
       <div style={styles.container}>
         <img className="w-20 mb-3" src="/unicode.png" alt="" />
         <h2>Login</h2>
@@ -93,6 +129,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={styles.input}
+            required
           />
           <input
             type="password"
@@ -100,6 +137,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             style={styles.input}
+            required
           />
           <button
             type="submit"
