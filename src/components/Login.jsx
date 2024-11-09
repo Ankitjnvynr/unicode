@@ -65,6 +65,7 @@ const Login = () => {
       background: "rgba(0,0,0,0.6)",
       backdropFilter: "blur(5px)",
       boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
+transition: "0.8s ease-in-out",
     },
     input: {
       width: "100%",
