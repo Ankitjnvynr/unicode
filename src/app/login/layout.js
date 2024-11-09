@@ -5,7 +5,7 @@ export default function LoginLayout({ children }) {
     <div
       style={{
         minHeight: "100vh",
-        background: "url(/bg/bg.jpg) center/cover",
+        background: "url(/bg/bg.jpeg) center/cover",
       }}
     >
       <div
