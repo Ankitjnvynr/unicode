@@ -1,5 +1,5 @@
 import Login from "./Login";
-import Signup from "./SignUp";
+import Signup from "./Signup";
 import { theme } from "./theme";
 
 export {Login ,
