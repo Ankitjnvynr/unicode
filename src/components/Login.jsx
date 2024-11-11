@@ -24,7 +24,13 @@ const Login = () => {
   ];
 
   const checkDomain = (e) => {
+    if( e==null||e=='') {
+      setError('');
+      setEmail(e);
+      return false;
+    };
     const emailDomain = e.split("@")[1];
+    
     if (!allowedDomains.includes(emailDomain)) {
       setError("Invalid Email Domain");
       setEmail(e);
@@ -33,7 +39,8 @@ const Login = () => {
       setError("");
       setEmail(e);
     }
-  };
+    
+    };
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -72,7 +79,7 @@ const Login = () => {
       router.push("/");
     } else {
       toast.error("Invalid email or password");
-      setError("Invalid email or password"); // Display error message in UI
+      //setError("Invalid email or password"); // Display error message in UI
     }
   };
 
@@ -136,6 +143,19 @@ const Login = () => {
     socialButtonHover: {
       boxShadow: "0 0 20px #333, 0 0 30px #333, 0 0 40px #333",
     },
+    error :{
+      color: '#FF4C4C', // Bright red text for visibility
+      borderRadius: '5px', // Rounded corners for a softer look
+      fontWeight: '300', // Bold text for emphasis
+      textAlign: 'center', // Centered text for readability
+      fontSize:12,
+      
+      marginTop:'-10px',
+      textAlign:'left',
+      color:'yellow'
+     
+  
+    }
   };
 
   if (loading) return null;
@@ -156,7 +176,7 @@ const Login = () => {
             required
           />
           {error && (
-            <div className="text-red-600 text-sm my-2">
+            <div style={styles.error}>
               {error}
             </div>
           )}

@@ -17,12 +17,17 @@ export const metadata = {
   description: "Unicord-Connect with universe",
 };
 
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+         <ToastContainer />
         {children}
       </body>
     </html>
