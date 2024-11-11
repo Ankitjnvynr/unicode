@@ -1,5 +1,12 @@
 import React from "react";
 
+export const metadata = {
+  title: "Unicord-login",
+  description: "Unicord-Connect with universe",
+};
+
+
+
 export default function LoginLayout({ children }) {
   return (
     <div style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
