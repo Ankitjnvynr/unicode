@@ -62,10 +62,9 @@ const Login = () => {
       padding: "20px",
       textAlign: "center",
       maxWidth: "333px",
-      background: "rgba(0,0,0,0.6)",
+      background: "rgba(0,0,0,0.2)",
       backdropFilter: "blur(5px)",
       boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
-transition: "0.8s ease-in-out",
     },
     input: {
       width: "100%",
@@ -126,7 +125,7 @@ transition: "0.8s ease-in-out",
         <form onSubmit={handleLogin}>
           <input
             type="email"
-            placeholder="Johndoe@gmail.com"
+            placeholder="Enter your mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={styles.input}
