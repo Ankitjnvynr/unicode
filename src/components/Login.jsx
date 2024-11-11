@@ -14,6 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [validDomainStr,setValidDomainStr] = useState('')
 
   // Allowed email domains for login
   const allowedDomains = [
@@ -22,6 +23,19 @@ const Login = () => {
     "goa.bits-pilani.ac.in",
     "bits-pilani.ac.in",
   ];
+
+  useEffect(() => {
+    setValidDomainStr(allowedDomains.join(", "))
+    const validDomainStr = allowedDomains.join(", ")
+    console.log(validDomainStr);
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      router.push("/"); // Redirect to dashboard if logged in
+    } else {
+      setLoading(false); // Set loading to false once the check is complete
+    }
+  }, [router]);
+  
 
   const checkDomain = (e) => {
     if( e==null||e=='') {
@@ -32,7 +46,7 @@ const Login = () => {
     const emailDomain = e.split("@")[1];
     
     if (!allowedDomains.includes(emailDomain)) {
-      setError("Invalid Email Domain");
+      setError("Invalid Domain name ", validDomainStr);
       setEmail(e);
       return false;
     } else {
@@ -43,6 +57,8 @@ const Login = () => {
     };
 
   useEffect(() => {
+    const validDomainStr = allowedDomains.join(", ")
+    console.log(validDomainStr);
     const token = localStorage.getItem("authToken");
     if (token) {
       router.push("/"); // Redirect to dashboard if logged in
@@ -180,6 +196,10 @@ const Login = () => {
               {error}
             </div>
           )}
+          <span style={{
+            textAlign:'left',
+            fontSize:12
+          }}>{validDomainStr}</span>
           <input
             type="password"
             placeholder="Password"
