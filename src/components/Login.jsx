@@ -12,9 +12,29 @@ const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  // Check if the user is already logged in
+  // Allowed email domains for login
+  const allowedDomains = [
+    "hyd.bits-pilani.ac.in",
+    "dubai.bits-pilani.ac.in",
+    "goa.bits-pilani.ac.in",
+    "bits-pilani.ac.in",
+  ];
+
+  const checkDomain = (e) => {
+    const emailDomain = e.split("@")[1];
+    if (!allowedDomains.includes(emailDomain)) {
+      setError("Invalid Email Domain");
+      setEmail(e);
+      return false;
+    } else {
+      setError("");
+      setEmail(e);
+    }
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token) {
@@ -24,14 +44,19 @@ const Login = () => {
     }
   }, [router]);
 
-  // Handle login form submission
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Valid credentials
+    // Extract domain from email
+    const emailDomain = email.split("@")[1];
+
+    if (!allowedDomains.includes(emailDomain)) {
+      toast.error("Email domain not allowed.");
+      return;
+    }
+
+    // Valid credentials (make sure this list matches the emails you're testing)
     const validEmails = [
-      "cbs@gmail.com",
-      "ankitbkana@outlook.com",
       "abcd@bits-pilani.ac.in",
       "abcd@goa.bits-pilani.ac.in",
       "abcd@dubai.bits-pilani.ac.in",
@@ -41,14 +66,13 @@ const Login = () => {
     if (validEmails.includes(email) && password === "1234") {
       toast.success("Successfully logged in!");
 
-      // Set token and user email in localStorage
       localStorage.setItem("authToken", "mockToken123");
-      localStorage.setItem("userEmail", email); // Store the user's email
+      localStorage.setItem("userEmail", email);
 
-      // Redirect to the dashboard
       router.push("/");
     } else {
       toast.error("Invalid email or password");
+      setError("Invalid email or password"); // Display error message in UI
     }
   };
 
@@ -114,7 +138,7 @@ const Login = () => {
     },
   };
 
-  if (loading) return null; // Don't render anything while loading
+  if (loading) return null;
 
   return (
     <div className="flex justify-center items-center min-h-[90vh]">
@@ -127,10 +151,15 @@ const Login = () => {
             type="email"
             placeholder="Enter your mail"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => checkDomain(e.target.value)}
             style={styles.input}
             required
           />
+          {error && (
+            <div className="text-red-600 text-sm my-2">
+              {error}
+            </div>
+          )}
           <input
             type="password"
             placeholder="Password"
