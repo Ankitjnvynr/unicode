@@ -97,7 +97,7 @@ const Login = () => {
         backgroundImage: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(70, 130, 180, 0.2), rgba(0, 0, 0, 1))`,
       }}
     >
-      <div className="flex flex-col items-center text-center p-8 max-w-sm w-full bg-opacity-20 bg-black backdrop-blur-md shadow-lg rounded-lg border border-gray-600 shadow-gray-800">
+      <div className="flex mx-2 flex-col items-center text-center p-8 max-w-sm w-full bg-opacity-20 bg-black backdrop-blur-md shadow-lg rounded-lg border border-gray-600 shadow-gray-800">
         {/* <img className="w-10 mb-4" src="/unicode.png" alt="logo" /> */}
 
         <div className="space-y-3 w-full">
