@@ -99,6 +99,7 @@ const Login = () => {
     >
       <div className="flex mx-2 flex-col items-center text-center p-8 max-w-sm w-full bg-opacity-20 bg-black backdrop-blur-md shadow-lg rounded-lg border border-gray-600 shadow-gray-800">
         {/* <img className="w-10 mb-4" src="/unicode.png" alt="logo" /> */}
+<h3 className="text-2xl">Sign In</h3>
 
         <div className="space-y-3 w-full">
           <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
