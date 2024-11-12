@@ -1,10 +1,10 @@
+// Login.js
+
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { theme } from "@/components";
-import { FaFacebook } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaGoogle, FaApple } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -14,9 +14,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [validDomainStr,setValidDomainStr] = useState('')
+  const [validDomainStr, setValidDomainStr] = useState("");
 
-  // Allowed email domains for login
   const allowedDomains = [
     "hyd.bits-pilani.ac.in",
     "dubai.bits-pilani.ac.in",
@@ -25,52 +24,33 @@ const Login = () => {
   ];
 
   useEffect(() => {
-    setValidDomainStr(allowedDomains.join(", "))
-    const validDomainStr = allowedDomains.join(", ")
-    console.log(validDomainStr);
+    setValidDomainStr(allowedDomains.join(", "));
     const token = localStorage.getItem("authToken");
     if (token) {
-      router.push("/"); // Redirect to dashboard if logged in
+      router.push("/");
     } else {
-      setLoading(false); // Set loading to false once the check is complete
+      setLoading(false);
     }
   }, [router]);
-  
 
   const checkDomain = (e) => {
-    if( e==null||e=='') {
-      setError('');
+    if (!e) {
+      setError("");
       setEmail(e);
-      return false;
-    };
+      return;
+    }
     const emailDomain = e.split("@")[1];
-    
     if (!allowedDomains.includes(emailDomain)) {
-      setError("Invalid Domain name ", validDomainStr);
+      setError("Invalid Domain name");
       setEmail(e);
-      return false;
     } else {
       setError("");
       setEmail(e);
     }
-    
-    };
-
-  useEffect(() => {
-    const validDomainStr = allowedDomains.join(", ")
-    console.log(validDomainStr);
-    const token = localStorage.getItem("authToken");
-    if (token) {
-      router.push("/"); // Redirect to dashboard if logged in
-    } else {
-      setLoading(false); // Set loading to false once the check is complete
-    }
-  }, [router]);
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    // Extract domain from email
     const emailDomain = email.split("@")[1];
 
     if (!allowedDomains.includes(emailDomain)) {
@@ -78,7 +58,6 @@ const Login = () => {
       return;
     }
 
-    // Valid credentials (make sure this list matches the emails you're testing)
     const validEmails = [
       "abcd@bits-pilani.ac.in",
       "abcd@goa.bits-pilani.ac.in",
@@ -95,155 +74,73 @@ const Login = () => {
       router.push("/");
     } else {
       toast.error("Invalid email or password");
-      //setError("Invalid email or password"); // Display error message in UI
-    }
-  };
-
-  const styles = {
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      color: "#fff",
-      padding: "20px",
-      textAlign: "center",
-      maxWidth: "333px",
-      background: "rgba(0,0,0,0.2)",
-      backdropFilter: "blur(5px)",
-      boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
-    },
-    input: {
-      width: "100%",
-      maxWidth: "300px",
-      padding: "5px 10px",
-      margin: "10px 0",
-      borderRadius: "5px",
-      border: "1px solid #ccc",
-      fontSize: "16px",
-      color: "black",
-    },
-    button: {
-      width: "100%",
-      maxWidth: "300px",
-      padding: "10px",
-      margin: "10px 0",
-      backgroundColor: "#6a0dad",
-      color: "#fff",
-      border: "none",
-      borderRadius: "5px",
-      cursor: "pointer",
-      fontSize: "16px",
-      textAlign: "center",
-      boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
-      transition: "0.3s ease-in-out",
-    },
-    socialButtons: {
-      display: "flex",
-      justifyContent: "center",
-      gap: "10px",
-      marginTop: "20px",
-    },
-    socialButton: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: "50%",
-      backgroundColor: "#fff",
-      color: "blue",
-      cursor: "pointer",
-      fontSize: "27px",
-      boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
-      transition: "0.3s ease-in-out",
-    },
-    socialButtonHover: {
-      boxShadow: "0 0 20px #333, 0 0 30px #333, 0 0 40px #333",
-    },
-    error :{
-      color: '#FF4C4C', // Bright red text for visibility
-      borderRadius: '5px', // Rounded corners for a softer look
-      fontWeight: '300', // Bold text for emphasis
-      textAlign: 'center', // Centered text for readability
-      fontSize:12,
-      
-      marginTop:'-10px',
-      textAlign:'left',
-      color:'yellow'
-     
-  
     }
   };
 
   if (loading) return null;
 
   return (
-    <div className="flex justify-center items-center min-h-[90vh]">
-      <div style={styles.container}>
-        <img className="w-20 mb-3" src="/unicode.png" alt="" />
-        <h2>Login</h2>
-        <p>Enter your credentials to connect</p>
-        <form onSubmit={handleLogin}>
+    <div className="flex justify-center items-center min-h-screen bg-black text-white bg-gradient-radial">
+      <div className="flex flex-col items-center text-center p-8 max-w-sm w-full bg-opacity-20 bg-black backdrop-blur-md shadow-lg rounded-lg border border-gray-600 shadow-gray-800">
+        {/* <img className="w-10 mb-4" src="/unicode.png" alt="logo" /> */}
+        
+        <div className="space-y-3 w-full">
+          <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
+            <FaGithub className="mr-2" /> Sign in with Github
+          </button>
+          {/* <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
+            <FaGoogle className="mr-2" /> Sign in with Google
+          </button> */}
+          {/* <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
+            <FaApple className="mr-2" /> Sign in with Apple
+          </button> */}
+        </div>
+
+        <div className="flex items-center my-6 w-full">
+          <hr className="flex-grow border-gray-600" />
+          <span className="px-2 text-gray-400">OR</span>
+          <hr className="flex-grow border-gray-600" />
+        </div>
+
+        <form onSubmit={handleLogin} className="w-full space-y-3">
           <input
             type="email"
-            placeholder="Enter your mail"
+            placeholder="Email"
             value={email}
             onChange={(e) => checkDomain(e.target.value)}
-            style={styles.input}
+            className="w-full px-4 py-2 bg-gray-800 text-gray-200 rounded-md outline-none focus:ring-2 focus:ring--500"
             required
           />
-          {error && (
-            <div style={styles.error}>
-              {error}
-            </div>
-          )}
-          <span style={{
-            textAlign:'left',
-            fontSize:12
-          }}>{validDomainStr}</span>
+          {error && <p className="text-yellow-500 text-xs text-left">{error}</p>}
+          <span className="text-xs text-left text-gray-400">{validDomainStr}</span>
+          
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={styles.input}
+            className="w-full px-4 py-2 bg-gray-800 text-gray-200 rounded-md outline-none focus:ring-2 focus:ring-brown-500"
             required
           />
+          <div className="w-full text-right">
+            <a href="#" className="text-xs text-gray-400 hover:underline">
+              Forgot your password?
+            </a>
+          </div>
+          
           <button
             type="submit"
-            style={{ ...styles.button, background: theme.colors.primary }}
+            className="w-full py-2 bg-white text-black rounded-md font-semibold transition duration-300 ease-in-out hover:bg-gray-200"
           >
-            Submit
+            Sign in
           </button>
         </form>
-        <div style={styles.socialButtons}>
-          <button
-            style={styles.socialButton}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow =
-                styles.socialButtonHover.boxShadow)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.boxShadow = styles.socialButton.boxShadow)
-            }
-          >
-            <FaFacebook />
-          </button>
-          <button
-            style={{ ...styles.socialButton, color: "black" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow =
-                styles.socialButtonHover.boxShadow)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.boxShadow = styles.socialButton.boxShadow)
-            }
-          >
-            <FaGithub />
-          </button>
-        </div>
-        <p className="py-5">
+
+        <p className="mt-4 text-sm text-gray-400">
           Don’t have an account?{" "}
-          <Link href="/login/register">Register here!</Link>
+          <Link href="/login/register" className="text-white hover:underline">
+            Sign up
+          </Link>
         </p>
       </div>
     </div>
