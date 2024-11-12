@@ -15,6 +15,7 @@ const Login = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [validDomainStr, setValidDomainStr] = useState("");
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const allowedDomains = [
     "hyd.bits-pilani.ac.in",
@@ -32,6 +33,16 @@ const Login = () => {
       setLoading(false);
     }
   }, [router]);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   const checkDomain = (e) => {
     if (!e) {
@@ -80,10 +91,15 @@ const Login = () => {
   if (loading) return null;
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-black text-white bg-gradient-radial">
+    <div
+      className="flex justify-center items-center min-h-screen bg-black text-white"
+      style={{
+        backgroundImage: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(70, 130, 180, 0.2), rgba(0, 0, 0, 1))`,
+      }}
+    >
       <div className="flex flex-col items-center text-center p-8 max-w-sm w-full bg-opacity-20 bg-black backdrop-blur-md shadow-lg rounded-lg border border-gray-600 shadow-gray-800">
         {/* <img className="w-10 mb-4" src="/unicode.png" alt="logo" /> */}
-        
+
         <div className="space-y-3 w-full">
           <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
             <FaGithub className="mr-2" /> Sign in with Github
@@ -113,13 +129,13 @@ const Login = () => {
           />
           {error && <p className="text-yellow-500 text-xs text-left">{error}</p>}
           <span className="text-xs text-left text-gray-400">{validDomainStr}</span>
-          
+
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-2 bg-gray-800 text-gray-200 rounded-md outline-none focus:ring-2 focus:ring-brown-500"
+            className="w-full px-4 py-2 bg-gray-800 text-gray-200 rounded-md outline-none focus:ring-2 focus:ring--500"
             required
           />
           <div className="w-full text-right">
@@ -127,7 +143,7 @@ const Login = () => {
               Forgot your password?
             </a>
           </div>
-          
+
           <button
             type="submit"
             className="w-full py-2 bg-white text-black rounded-md font-semibold transition duration-300 ease-in-out hover:bg-gray-200"
