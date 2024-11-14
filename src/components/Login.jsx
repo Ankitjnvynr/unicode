@@ -82,7 +82,7 @@ const Login = () => {
       localStorage.setItem("authToken", "mockToken123");
       localStorage.setItem("userEmail", email);
 
-      router.push("/");
+      router.push("/dashboard");
     } else {
       toast.error("Invalid email or password");
     }
