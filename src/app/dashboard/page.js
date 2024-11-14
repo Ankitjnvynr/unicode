@@ -33,7 +33,7 @@ export default function ProfilePage() {
             alt="Profile"
             width={128}
             height={128}
-            className="rounded-full object-cover"
+            className="rounded-full object-cover border "
           />
           <div className="text-center">
             <span className="text-gray-400 block">Asia/Jakarta</span>
@@ -81,12 +81,9 @@ export default function ProfilePage() {
           <p className="text-gray-400 max-w-lg">
             Selene is a Jakarta-based design engineer with a passion for transforming complex challenges into simple, elegant design solutions. Her work spans digital interfaces, interactive experiences, and the convergence of design and technology.
           </p>
-        </div>
-      </div>
-
-      {/* Navigation Links - Moved Below Main Content */}
-      <div className="flex justify-between items-center mt-8">
-        <div className="flex space-x-4">
+          {/* Navigation Links - Moved Below Main Content */}
+      <div className="flex justify-between items-center mt-8  ">
+        <div className="flex space-x-4 border rounded-md py-1 px-4 border-gray-600">
           {/* <a href="#" className="flex items-center space-x-1 hover:text-gray-300">
             <FiHome />
             <span>Home</span>
@@ -109,6 +106,10 @@ export default function ProfilePage() {
           </a>
         </div>
       </div>
+        </div>
+      </div>
+
+      
     </div>
   );
 }
