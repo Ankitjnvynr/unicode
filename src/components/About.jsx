@@ -4,31 +4,26 @@ import Image from 'next/image';
 import { FiHome, FiUser, FiBriefcase, FiFileText, FiImage, FiGithub, FiLinkedin, FiMail, FiUserPlus } from 'react-icons/fi';
 
 export default function Profile() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  // const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e) => {
-    const { clientX, clientY, currentTarget } = e;
-    const rect = currentTarget.getBoundingClientRect();
-    setMousePos({
-      x: clientX - rect.left,
-      y: clientY - rect.top,
-    });
-  };
+  // const handleMouseMove = (e) => {
+  //   const { clientX, clientY, currentTarget } = e;
+  //   const rect = currentTarget.getBoundingClientRect();
+  //   setMousePos({
+  //     x: clientX - rect.left,
+  //     y: clientY - rect.top,
+  //   });
+  // };
 
   return (
     <div
-      className="min-h-screen bg-gray-900 text-white p-8 relative overflow-hidden rounded-lg "
-      onMouseMove={handleMouseMove}
-      style={{
-        backgroundImage: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 0, 29, 1), rgba(0, 0, 0, 1))`,
-        transition: 'background 0.1s ease',
-      }}
+      
     >
         
       {/* Main Profile Content */}
       <div className="flex  gap-10">
         {/* Profile Image and Sidebar Details */}
-        <div className="flex flex-col items-center space-y-4 pr-8 border-r border-gray-700 p-2 w-1/4 py-5">
+        <div className="flex flex-col items-center space-y-4 pr-8  p-2 w-1/4 py-5">
           <Image
             src="/images/profile.jpg" // Replace with actual path to the profile image
             alt="Profile"
@@ -58,10 +53,7 @@ export default function Profile() {
                 <span>Follow</span>
               </button>
             </div>
-            <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-full flex items-center justify-center space-x-2">
-              <span>📅</span>
-              <span>Schedule a call</span>
-            </button>
+           
           </div>
 
           {/* Social Links */}

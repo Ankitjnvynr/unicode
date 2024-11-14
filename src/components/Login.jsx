@@ -18,6 +18,7 @@ const Login = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const allowedDomains = [
+    "gmail.com",
     "hyd.bits-pilani.ac.in",
     "dubai.bits-pilani.ac.in",
     "goa.bits-pilani.ac.in",
@@ -28,7 +29,7 @@ const Login = () => {
     setValidDomainStr(allowedDomains.join(", "));
     const token = localStorage.getItem("authToken");
     if (token) {
-      router.push("/");
+      router.push("/dashboard");
     } else {
       setLoading(false);
     }
@@ -70,6 +71,7 @@ const Login = () => {
     }
 
     const validEmails = [
+      "abc@gmail.com",
       "abcd@bits-pilani.ac.in",
       "abcd@goa.bits-pilani.ac.in",
       "abcd@dubai.bits-pilani.ac.in",
@@ -82,7 +84,7 @@ const Login = () => {
       localStorage.setItem("authToken", "mockToken123");
       localStorage.setItem("userEmail", email);
 
-      router.push("/");
+      router.push("/dashboard");
     } else {
       toast.error("Invalid email or password");
     }
@@ -100,12 +102,12 @@ const Login = () => {
       <div className="flex mx-2 flex-col items-center text-center p-8 max-w-sm w-full bg-opacity-20 bg-black backdrop-blur-md shadow-lg rounded-lg border border-gray-600 shadow-gray-800">
         {/* <img className="w-10 mb-4" src="/unicode.png" alt="logo" /> */}
 
-<h3 className="text-2xl mb-5 font-w-600">Sign In</h3>
+        <h3 className="text-4xl mb-10 font-bold my-4">Sign In</h3>
 
         <div className="space-y-3 w-full">
-          <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
+          {/* <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
             <FaGithub className="mr-2" /> Sign in with Github
-          </button>
+          </button> */}
           {/* <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
             <FaGoogle className="mr-2" /> Sign in with Google
           </button> */}
@@ -114,13 +116,16 @@ const Login = () => {
           </button> */}
         </div>
 
-        <div className="flex items-center my-6 w-full">
+        {/* <div className="flex items-center my-6 w-full">
           <hr className="flex-grow border-gray-600" />
           <span className="px-2 text-gray-400">OR</span>
           <hr className="flex-grow border-gray-600" />
-        </div>
+        </div> */}
 
-        <form onSubmit={handleLogin} className="w-full space-y-3">
+        <form
+          onSubmit={handleLogin}
+          className="w-full space-y-5 flex flex-col "
+        >
           <input
             type="email"
             placeholder="Email"
@@ -129,8 +134,12 @@ const Login = () => {
             className="w-full px-4 py-2 bg-gray-800 text-gray-200 rounded-md outline-none focus:ring-2 focus:ring--500"
             required
           />
-          {error && <p className="text-yellow-500 text-xs text-left">{error}</p>}
-          <span className="text-xs text-left text-gray-400">{validDomainStr}</span>
+          {error && (
+            <p style={{
+              marginTop:'-1px'
+            }} className="text-yellow-500 text-xs text-left -mt-2">{error}</p>
+          )}
+          {/* <span className="text-xs text-left text-gray-400">{validDomainStr}</span> */}
 
           <input
             type="password"

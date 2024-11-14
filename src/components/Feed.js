@@ -3,22 +3,44 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 function Feed() {
+
+  
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
 
+
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    const email = localStorage.getItem("userEmail");
+    router.push("/dashboard");
+      
+    // const token = localStorage.getItem("authToken");
+    // if (token) {
+    //   router.push("/dashboard");
+    // } else {
+    //   router.push("/login");
+    //   setLoading(false);
+    // }
+  }, );
 
-    if (token && email) {
-      setUserData(email); // Set user email
-      setLoading(false); // Stop loading if user is authenticated
-    } else {
-      router.push("/login"); // Redirect to login if not authenticated
-    }
-  }, [router]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("authToken");
+  //   const email = localStorage.getItem("userEmail");
 
+  //   if (token && email) {
+  //     setUserData(email); // Set user email
+  //     setLoading(false); // Stop loading if user is authenticated
+  //   } else {
+  //     router.push("/login"); // Redirect to login if not authenticated
+  //   }
+  // }, [router]);
+
+
+
+
+
+
+
+  
   const handleLogout = () => {
     if (confirm('are you sure ?')){
         localStorage.removeItem("authToken"); // Remove the token from localStorage
