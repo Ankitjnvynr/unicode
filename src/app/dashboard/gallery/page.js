@@ -1,9 +1,9 @@
-import { Profile } from '@/components'
+import { Gallery, Profile } from '@/components'
 import React from 'react'
 
 
 export default function page() {
   return (
-    <><div>Gallery page</div></>
+    <><Gallery/></>
   )
 }

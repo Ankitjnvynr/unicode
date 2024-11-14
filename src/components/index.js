@@ -6,6 +6,7 @@ import Sidebar from "./Sidebar";
 import { Background } from "@/Background";
 import SpotlightBackground from "./SpotlightBackground";
 import Profile from "./About";
+import Gallery from "./Gallery";
 
 export {
   Login,
@@ -16,4 +17,5 @@ export {
   Background,
   SpotlightBackground,
   Profile,
+  Gallery,
 };
