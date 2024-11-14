@@ -5,5 +5,15 @@ import Feed from "./Feed";
 import Sidebar from "./Sidebar";
 import { Background } from "@/Background";
 import SpotlightBackground from "./SpotlightBackground";
+import Profile from "./About";
 
-export { Login, Signup, Feed, theme, Sidebar,Background,SpotlightBackground };
+export {
+  Login,
+  Signup,
+  Feed,
+  theme,
+  Sidebar,
+  Background,
+  SpotlightBackground,
+  Profile,
+};

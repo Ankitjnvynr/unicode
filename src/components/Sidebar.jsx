@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import { FiHome } from "react-icons/fi";
+import { FiHome, FiImage } from "react-icons/fi";
 import { MdDynamicFeed } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
+import Link from 'next/link';
 
 const Sidebar = () => {
     const pathname = usePathname() ?? '';
@@ -22,10 +23,14 @@ const Sidebar = () => {
                     <MdDynamicFeed />
                         Feed
                     </button>
-                    <button className={`w-full flex items-center p-2 gap-3 text-sm ${pathname === '' ? 'bg-gray-800' : ''}`}>
+                    <Link href={'/dashboard/gallery'} className={`w-full flex items-center p-2 gap-3 text-sm ${pathname === '' ? 'bg-gray-800' : ''}`}>
+                    <FiImage />
+                        Gallery
+                    </Link>
+                    <Link href={'/dashboard/profile'} className={`w-full flex items-center p-2 gap-3 text-sm ${pathname === '' ? 'bg-gray-800' : ''}`}>
                     <FaRegUser />
                         Profile
-                    </button>
+                    </Link>
                     
                 </div>
 
