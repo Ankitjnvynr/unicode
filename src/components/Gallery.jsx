@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 const images = [
     { src: '/pngtree-majestic-volcano-eruption-at-twilight-image_16213116.jpg', alt: 'Northern Lights 1' },
     { src: '/pexels-tahir-shaw-50609-205410.jpg', alt: 'Northern Lights 2' },
-    { src: '/path/to/image3.jpg', alt: 'Northern Lights 3' },
-    { src: '/path/to/image4.jpg', alt: 'Northern Lights 4' },
-    { src: '/path/to/image5.jpg', alt: 'Northern Lights 5' },
-    { src: '/path/to/image6.jpg', alt: 'Northern Lights 6' },
+    // { src: '/path/to/image3.jpg', alt: 'Northern Lights 3' },
+    // { src: '/path/to/image4.jpg', alt: 'Northern Lights 4' },
+    // { src: '/path/to/image5.jpg', alt: 'Northern Lights 5' },
+    // { src: '/path/to/image6.jpg', alt: 'Northern Lights 6' },
 ];
 
 function Gallery() {
