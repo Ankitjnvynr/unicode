@@ -8,6 +8,9 @@ import SpotlightBackground from "./SpotlightBackground";
 import Profile from "./About";
 import Gallery from "./Gallery";
 import Event from "./Event";
+import Messages from "./Messages";
+import ChatContainer from "./chatComps/ChatContainer";
+
 
 export {
   Login,
@@ -20,4 +23,7 @@ export {
   Profile,
   Gallery,
   Event,
+  Messages,
+  ChatContainer
+  
 };
