@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const events = [
   {
-    title: 'The Halal Food Festival Glasgow & Indoor Lifestyle Exhibition',
+    title: 'The Food Festival Glasgow & Indoor Lifestyle Exhibition',
     date: 'Sun, 29 Oct',
     time: '10:00 AM - 8:00 PM',
     location: 'Glasgow',
@@ -27,7 +27,7 @@ const events = [
     location: 'ACC Theatre',
     eventType: 'Entertainment',
     price: '£10',
-    image: '/path/to/image3.jpg'
+    image: '/pngtree-majestic-volcano-eruption-at-twilight-image_16213116.jpg'
   },
   {
     title: 'Mischief | Christmas Standing Special - FINAL 60 TICKETS',
@@ -36,7 +36,7 @@ const events = [
     location: 'Manchester',
     eventType: 'Entertainment',
     price: '£30',
-    image: '/path/to/image4.jpg'
+    image: '/pexels-tahir-shaw-50609-205410.jpg'
   },
   // Add more events as needed
 ];
