@@ -44,7 +44,7 @@ const events = [
 const Event = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [filterDate, setFilterDate] = useState("all");
+  const [filterType, setFilterType] = useState("All Types");
 
   const openModal = (event) => {
     setSelectedEvent(event);
@@ -56,34 +56,34 @@ const Event = () => {
     setIsOpen(false);
   };
 
-  const handleFilterChange = (e) => {
-    setFilterDate(e.target.value);
+  const handleFilterTypeChange = (type) => {
+    setFilterType(type);
   };
 
   const filteredEvents = events.filter((event) => {
-    if (filterDate === "all") return true;
-    return event.date.includes(filterDate);
+    if (filterType === "All Types") return true;
+    return event.eventType === filterType;
   });
+
+  const filterTypes = ["All Types", "Food & Drink", "Entertainment", "Business & Conference", "Arts & Performance", "Comedy"];
 
   return (
     <div className="flex flex-col items-center w-full gap-4 p-4 min-h-screen">
-      <h1 className="text-3xl font-bold mb-4 text-center text-white">Events</h1>
+      <h1 className="text-xl font-bold mb-4 text-center text-white">Events</h1>
 
-      {/* Date Filter Dropdown */}
-      <div className="mb-8">
-        <label className="text-white mr-2">Filter by Date:</label>
-        <select
-          value={filterDate}
-          onChange={handleFilterChange}
-          className="p-2 bg-gray-800 text-white rounded"
-        >
-          <option value="all">All Dates</option>
-          <option value="Oct">October</option>
-          <option value="Nov">November</option>
-          <option value="Dec">December</option>
-          <option value="Jan">January</option>
-          {/* Add more months or specific dates if needed */}
-        </select>
+      {/* Category Filter */}
+      <div className="flex overflow-x-auto whitespace-nowrap mb-8 space-x-4 px-4">
+        {filterTypes.map((type) => (
+          <button
+            key={type}
+            onClick={() => handleFilterTypeChange(type)}
+            className={`px-4 py-2 rounded-full flex items-center space-x-2 font-medium transition duration-300
+              ${filterType === type ? "bg-gray-800 text-white border-l-2 border-r-2 border-white" : "bg-gray-800 hover:bg-gray-700 text-gray-400"}
+            `}
+          >
+            {type}
+          </button>
+        ))}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-5xl">
