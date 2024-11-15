@@ -7,6 +7,7 @@ import { Background } from "@/Background";
 import SpotlightBackground from "./SpotlightBackground";
 import Profile from "./About";
 import Gallery from "./Gallery";
+import Event from "./Event";
 
 export {
   Login,
@@ -18,4 +19,5 @@ export {
   SpotlightBackground,
   Profile,
   Gallery,
+  Event,
 };
