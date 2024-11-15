@@ -1,10 +1,10 @@
+// Login.js
+
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { theme } from "@/components";
-import { FaFacebook } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaGoogle, FaApple } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -12,26 +12,66 @@ const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [validDomainStr, setValidDomainStr] = useState("");
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  // Check if the user is already logged in
+  const allowedDomains = [
+    "gmail.com",
+    "hyd.bits-pilani.ac.in",
+    "dubai.bits-pilani.ac.in",
+    "goa.bits-pilani.ac.in",
+    "bits-pilani.ac.in",
+  ];
+
   useEffect(() => {
+    setValidDomainStr(allowedDomains.join(", "));
     const token = localStorage.getItem("authToken");
     if (token) {
-      router.push("/"); // Redirect to dashboard if logged in
+      router.push("/dashboard");
     } else {
-      setLoading(false); // Set loading to false once the check is complete
+      setLoading(false);
     }
   }, [router]);
 
-  // Handle login form submission
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  const checkDomain = (e) => {
+    if (!e) {
+      setError("");
+      setEmail(e);
+      return;
+    }
+    const emailDomain = e.split("@")[1];
+    if (!allowedDomains.includes(emailDomain)) {
+      setError("Invalid Domain name");
+      setEmail(e);
+    } else {
+      setError("");
+      setEmail(e);
+    }
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
+    const emailDomain = email.split("@")[1];
 
-    // Valid credentials
+    if (!allowedDomains.includes(emailDomain)) {
+      toast.error("Email domain not allowed.");
+      return;
+    }
+
     const validEmails = [
-      "cbs@gmail.com",
-      "ankitbkana@outlook.com",
+      "abc@gmail.com",
       "abcd@bits-pilani.ac.in",
       "abcd@goa.bits-pilani.ac.in",
       "abcd@dubai.bits-pilani.ac.in",
@@ -41,140 +81,93 @@ const Login = () => {
     if (validEmails.includes(email) && password === "1234") {
       toast.success("Successfully logged in!");
 
-      // Set token and user email in localStorage
       localStorage.setItem("authToken", "mockToken123");
-      localStorage.setItem("userEmail", email); // Store the user's email
+      localStorage.setItem("userEmail", email);
 
-      // Redirect to the dashboard
-      router.push("/");
+      router.push("/dashboard");
     } else {
       toast.error("Invalid email or password");
     }
   };
 
-  const styles = {
-    container: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      color: "#fff",
-      padding: "20px",
-      textAlign: "center",
-      maxWidth: "333px",
-      background: "rgba(0,0,0,0.6)",
-      backdropFilter: "blur(5px)",
-      boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
-    },
-    input: {
-      width: "100%",
-      maxWidth: "300px",
-      padding: "5px 10px",
-      margin: "10px 0",
-      borderRadius: "5px",
-      border: "1px solid #ccc",
-      fontSize: "16px",
-      color: "black",
-    },
-    button: {
-      width: "100%",
-      maxWidth: "300px",
-      padding: "10px",
-      margin: "10px 0",
-      backgroundColor: "#6a0dad",
-      color: "#fff",
-      border: "none",
-      borderRadius: "5px",
-      cursor: "pointer",
-      fontSize: "16px",
-      textAlign: "center",
-      boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
-      transition: "0.3s ease-in-out",
-    },
-    socialButtons: {
-      display: "flex",
-      justifyContent: "center",
-      gap: "10px",
-      marginTop: "20px",
-    },
-    socialButton: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: "50%",
-      backgroundColor: "#fff",
-      color: "blue",
-      cursor: "pointer",
-      fontSize: "27px",
-      boxShadow: "0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad",
-      transition: "0.3s ease-in-out",
-    },
-    socialButtonHover: {
-      boxShadow: "0 0 20px #333, 0 0 30px #333, 0 0 40px #333",
-    },
-  };
-
-  if (loading) return null; // Don't render anything while loading
+  if (loading) return null;
 
   return (
-    <div className="flex justify-center items-center min-h-[90vh]">
-      <div style={styles.container}>
-        <img className="w-20 mb-3" src="/unicode.png" alt="" />
-        <h2>Login</h2>
-        <p>Enter your credentials to connect</p>
-        <form onSubmit={handleLogin}>
+    <div
+      className="flex justify-center items-center min-h-screen bg-black text-white"
+      style={{
+        backgroundImage: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(70, 130, 180, 0.2), rgba(0, 0, 0, 1))`,
+      }}
+    >
+      <div className="flex mx-2 flex-col items-center text-center p-8 max-w-sm w-full bg-opacity-20 bg-black backdrop-blur-md shadow-lg rounded-lg border border-gray-600 shadow-gray-800">
+        {/* <img className="w-10 mb-4" src="/unicode.png" alt="logo" /> */}
+
+        <h3 className="text-4xl mb-10 font-bold my-4">Sign In</h3>
+
+        <div className="space-y-3 w-full">
+          {/* <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
+            <FaGithub className="mr-2" /> Sign in with Github
+          </button> */}
+          {/* <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
+            <FaGoogle className="mr-2" /> Sign in with Google
+          </button> */}
+          {/* <button className="flex items-center justify-center w-full py-2 border border-gray-500 rounded-md hover:bg-gray-800">
+            <FaApple className="mr-2" /> Sign in with Apple
+          </button> */}
+        </div>
+
+        {/* <div className="flex items-center my-6 w-full">
+          <hr className="flex-grow border-gray-600" />
+          <span className="px-2 text-gray-400">OR</span>
+          <hr className="flex-grow border-gray-600" />
+        </div> */}
+
+        <form
+          onSubmit={handleLogin}
+          className="w-full space-y-5 flex flex-col "
+        >
           <input
             type="email"
-            placeholder="Johndoe@gmail.com"
+            placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={styles.input}
+            onChange={(e) => checkDomain(e.target.value)}
+            className="w-full px-4 py-2 bg-gray-800 text-gray-200 rounded-md outline-none focus:ring-2 focus:ring--500"
             required
           />
+          {error && (
+            <p style={{
+              marginTop:'-1px'
+            }} className="text-yellow-500 text-xs text-left -mt-2">{error}</p>
+          )}
+          {/* <span className="text-xs text-left text-gray-400">{validDomainStr}</span> */}
+
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={styles.input}
+            className="w-full px-4 py-2 bg-gray-800 text-gray-200 rounded-md outline-none focus:ring-2 focus:ring--500"
             required
           />
+          <div className="w-full text-right">
+            <a href="#" className="text-xs text-gray-400 hover:underline">
+              Forgot your password?
+            </a>
+          </div>
+
           <button
             type="submit"
-            style={{ ...styles.button, background: theme.colors.primary }}
+            className="w-full py-2 bg-white text-black rounded-md font-semibold transition duration-300 ease-in-out hover:bg-gray-200"
           >
-            Submit
+            Sign in
           </button>
         </form>
-        <div style={styles.socialButtons}>
-          <button
-            style={styles.socialButton}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow =
-                styles.socialButtonHover.boxShadow)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.boxShadow = styles.socialButton.boxShadow)
-            }
-          >
-            <FaFacebook />
-          </button>
-          <button
-            style={{ ...styles.socialButton, color: "black" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow =
-                styles.socialButtonHover.boxShadow)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.boxShadow = styles.socialButton.boxShadow)
-            }
-          >
-            <FaGithub />
-          </button>
-        </div>
-        <p className="py-5">
+
+        <p className="mt-4 text-sm text-gray-400">
           Don’t have an account?{" "}
-          <Link href="/login/register">Register here!</Link>
+          <Link href="/login/register" className="text-white hover:underline">
+            Sign up
+          </Link>
         </p>
       </div>
     </div>
