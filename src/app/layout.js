@@ -19,17 +19,20 @@ export const metadata = {
 
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+import { ReduxProvider } from "@/components";
 
 
 export default function RootLayout({ children }) {
   return (
-    <html  lang="en">
+    <html lang="en">
       <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-         <ToastContainer />
-        {children}
+        <ReduxProvider>
+          <ToastContainer />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );

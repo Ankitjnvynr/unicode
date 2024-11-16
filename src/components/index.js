@@ -13,6 +13,7 @@ import ChatContainer from "./chatComps/ChatContainer";
 import ChatSidebar from "./chatComps/ChatSidebar";
 import ChatWindow from "./chatComps/ChatWindow";
 import ChatInput from "./chatComps/ChatInput";
+import ReduxProvider from "./ReduxProvider";
 
 
 export {
@@ -30,6 +31,7 @@ export {
   ChatContainer,
   ChatSidebar,
   ChatWindow,
-  ChatInput
+  ChatInput,
+  ReduxProvider
   
 };

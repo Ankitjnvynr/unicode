@@ -1,11 +1,13 @@
-"use client"
+"use client";
 
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { BsCheck, BsCheckAll, BsChatDots } from 'react-icons/bs'; // Import single, double tick, and new chat icons
+import { useSelector } from 'react-redux';
 
-const ChatSidebar = ({ chats, onSelectChat }) => {
+const ChatSidebar = ({ onSelectChat }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const chats = useSelector((state) => state.chats); // Assuming `chats` is in your Redux state
 
   // Function to handle search input
   const handleSearchChange = (e) => {
@@ -38,9 +40,10 @@ const ChatSidebar = ({ chats, onSelectChat }) => {
 
       <div className="overflow-y-auto flex-1">
         {filteredChats.map((chat) => (
-          <Link href={`/dashboard/messages/${chat.id}`}
+          <Link 
+            href={`/dashboard/messages/${chat.id}`}
             key={chat.id}
-            // onClick={() => onSelectChat(chat.id)}
+            onClick={() => onSelectChat && onSelectChat(chat.id)}
             className="flex items-center p-4 hover:bg-gray-800 w-full"
           >
             <img
