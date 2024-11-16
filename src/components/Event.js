@@ -38,7 +38,6 @@ const events = [
     price: '£30',
     image: '/pexels-tahir-shaw-50609-205410.jpg'
   },
-  // Add more events as needed
 ];
 
 const Event = () => {
@@ -72,7 +71,7 @@ const Event = () => {
       <h1 className="text-xl font-bold mb-4 text-center text-white">Events</h1>
 
       {/* Category Filter */}
-      <div className="flex overflow-x-auto whitespace-nowrap mb-8 space-x-4 px-4">
+      <div className="flex overflow-x-auto whitespace-nowrap mb-8 space-x-4 px-2 sm:px-4 scrollbar-hide scroll-smooth w-full ">
         {filterTypes.map((type) => (
           <button
             key={type}
@@ -86,7 +85,7 @@ const Event = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-5xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-5xl px-2 sm:px-0">
         {filteredEvents.map((event, index) => (
           <div
             key={index}
@@ -96,12 +95,12 @@ const Event = () => {
             <img
               src={event.image}
               alt={event.title}
-              className="w-full h-40 object-cover rounded-t-lg transition-transform duration-300 hover:scale-105"
+              className="w-full h-40 sm:h-48 object-cover rounded-t-lg transition-transform duration-300 hover:scale-105"
             />
             <div className="p-4 text-white">
               <h2 className="text-lg font-semibold">{event.title}</h2>
-              <p className="text-gray-400">{event.date} | {event.time}</p>
-              <p className="text-gray-400">{event.location} - {event.eventType}</p>
+              <p className="text-gray-400 text-sm sm:text-base">{event.date} | {event.time}</p>
+              <p className="text-gray-400 text-sm sm:text-base">{event.location} - {event.eventType}</p>
               <p className="text-blue-400 font-bold">{event.price}</p>
             </div>
           </div>
@@ -111,7 +110,7 @@ const Event = () => {
       {/* Modal */}
       {isOpen && selectedEvent && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
-          <div className="relative p-4 bg-black rounded-lg shadow-lg max-w-lg w-full">
+          <div className="relative p-4 bg-black rounded-lg shadow-lg max-w-lg w-full mx-2">
             <button
               onClick={closeModal}
               className="absolute top-2 right-2 text-white bg-black rounded-full w-8 h-8 flex items-center justify-center font-bold"
@@ -124,11 +123,11 @@ const Event = () => {
               className="w-full h-auto object-contain rounded-lg mb-4"
             />
             <h2 className="text-lg font-semibold mb-2 text-white">{selectedEvent.title}</h2>
-            <p className="text-gray-400 mb-1"><strong>Date:</strong> {selectedEvent.date}</p>
-            <p className="text-gray-400 mb-1"><strong>Time:</strong> {selectedEvent.time}</p>
-            <p className="text-gray-400 mb-1"><strong>Location:</strong> {selectedEvent.location}</p>
-            <p className="text-gray-400 mb-1"><strong>Type:</strong> {selectedEvent.eventType}</p>
-            <p className="text-blue-400 font-bold"><strong>Price:</strong> {selectedEvent.price}</p>
+            <p className="text-gray-400 mb-1 text-sm sm:text-base"><strong>Date:</strong> {selectedEvent.date}</p>
+            <p className="text-gray-400 mb-1 text-sm sm:text-base"><strong>Time:</strong> {selectedEvent.time}</p>
+            <p className="text-gray-400 mb-1 text-sm sm:text-base"><strong>Location:</strong> {selectedEvent.location}</p>
+            <p className="text-gray-400 mb-1 text-sm sm:text-base"><strong>Type:</strong> {selectedEvent.eventType}</p>
+            <p className="text-blue-400 font-bold text-sm sm:text-base"><strong>Price:</strong> {selectedEvent.price}</p>
           </div>
         </div>
       )}
