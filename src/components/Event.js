@@ -67,11 +67,11 @@ const Event = () => {
   const filterTypes = ["All Types", "Food & Drink", "Entertainment", "Business & Conference", "Arts & Performance", "Comedy"];
 
   return (
-    <div className="flex flex-col items-center w-full gap-4 p-4 min-h-screen">
+    <div className="flex flex-col items-center w-full gap-4 p-1 md:p-4 min-h-screen">
       <h1 className="text-xl font-bold mb-4 text-center text-white">Events</h1>
 
       {/* Category Filter */}
-      <div className="flex overflow-x-auto whitespace-nowrap mb-8 space-x-4 px-2 sm:px-4 scrollbar-hide scroll-smooth w-full ">
+      <div className="flex overflow-x-auto whitespace-nowrap mb-8 space-x-4 px-1 sm:px-4 scrollbar-hide scroll-smooth w-full ">
         {filterTypes.map((type) => (
           <button
             key={type}
