@@ -10,6 +10,9 @@ import Gallery from "./Gallery";
 import Event from "./Event";
 import Messages from "./Messages";
 import ChatContainer from "./chatComps/ChatContainer";
+import ChatSidebar from "./chatComps/ChatSidebar";
+import ChatWindow from "./chatComps/ChatWindow";
+import ChatInput from "./chatComps/ChatInput";
 
 
 export {
@@ -24,6 +27,9 @@ export {
   Gallery,
   Event,
   Messages,
-  ChatContainer
+  ChatContainer,
+  ChatSidebar,
+  ChatWindow,
+  ChatInput
   
 };

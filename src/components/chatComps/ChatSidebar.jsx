@@ -1,3 +1,6 @@
+"use client"
+
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { BsCheck, BsCheckAll, BsChatDots } from 'react-icons/bs'; // Import single, double tick, and new chat icons
 
@@ -35,9 +38,9 @@ const ChatSidebar = ({ chats, onSelectChat }) => {
 
       <div className="overflow-y-auto flex-1">
         {filteredChats.map((chat) => (
-          <button
+          <Link href={`/dashboard/messages/${chat.id}`}
             key={chat.id}
-            onClick={() => onSelectChat(chat.id)}
+            // onClick={() => onSelectChat(chat.id)}
             className="flex items-center p-4 hover:bg-gray-800 w-full"
           >
             <img
@@ -57,7 +60,7 @@ const ChatSidebar = ({ chats, onSelectChat }) => {
               </p>
             </div>
             <span className="text-xs text-gray-400">{chat.time}</span>
-          </button>
+          </Link>
         ))}
       </div>
     </div>

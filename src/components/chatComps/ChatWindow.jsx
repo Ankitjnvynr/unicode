@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';

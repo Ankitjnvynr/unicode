@@ -1,10 +1,11 @@
 "use client"
 
-import React, { useState } from 'react';
-import ChatSidebar from './ChatSidebar';
-import ChatWindow from './ChatWindow';
+import { ChatSidebar } from '@/components';
+import React, { useState } from 'react'
 
-const ChatContainer = () => {
+export default function MessageLayout({ children }) {
+
+
   const [activeChatId, setActiveChatId] = useState(null);
   const [chats] = useState([
     { id: 1, name: 'Rajesh Kumar', avatar: '/user/userdefault.png', lastMessage: 'Hello!', time: '16:27', seen: true },
@@ -18,8 +19,8 @@ const ChatContainer = () => {
     { id: 9, name: 'Manoj Verma', avatar: '/user/userdefault.png', lastMessage: 'Got it, thanks!', time: '08:50', seen: false },
     { id: 10, name: 'Pooja Iyer', avatar: '/user/userdefault.png', lastMessage: 'Let’s discuss.', time: '07:25', seen: true },
   ]);
-  
-  
+
+
   const [messages, setMessages] = useState([
     { sender: 'user', text: 'Hello, John!' },
     { sender: 'friend', text: 'Hey there!' },
@@ -37,20 +38,18 @@ const ChatContainer = () => {
     ]);
   };
 
+
+
   return (
-    <div className="flex h-full ">
+    <div className='flex flex-col h-[100%] '>
+      <div className="flex flex-1 h-[90vh]  ">
       <ChatSidebar chats={chats} onSelectChat={handleSelectChat} />
       <div className="flex-1">
-        {activeChatId ? (
-          <ChatWindow messages={messages} onSendMessage={handleSendMessage} />
-        ) : (
-          <div className="flex items-center justify-center h-full text-gray-500">
-            Select a chat to start messaging 
-          </div>
-        )}
+
+        {children}
+      </div>
+
       </div>
     </div>
-  );
-};
-
-export default ChatContainer;
+  )
+}

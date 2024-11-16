@@ -35,11 +35,11 @@ export default function DashLayout({ children }) {
       ) : (
         <div className="relative min-h-screen overflow-hidden text-white">
           {/* Main Layout */}
-          <div className="flex h-screen p-2 gap-2 ">
-            <div className="min-w-[220px]">
+          <div className="flex flex-col-reverse md:flex-row h-screen p-2 gap-2">
+            <div className="min-w-[220px]  ">
               <Sidebar />
             </div>
-            <div className="flex-1 p-2 overflow-auto pt-10 overflow-y-auto  h-[100%] ">{children}</div>
+            <div className="flex-1 p-1 pb-16 md:pb-2 md:p-2  overflow-auto pt-10  overflow-y-auto  h-[100%]  ">{children}</div>
           </div>
         </div>
       )}
