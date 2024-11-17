@@ -44,7 +44,7 @@ export default function MessageLayout({ children }) {
     <div className='flex flex-col h-[100%] '>
       <div className="flex flex-1 h-[90vh]  ">
       <ChatSidebar chats={chats} onSelectChat={handleSelectChat} />
-      <div className="flex-1">
+      <div className="hidden md:flex flex-1">
 
         {children}
       </div>
