@@ -79,12 +79,12 @@ const Login = () => {
   return (
     <div className="flex flex-col justify-between min-h-screen bg-black text-white">
       {/* Header */}
-      <header className="flex justify-between items-center px-6 py-4 text-sm border-b border-gray-800">
-        <div className="text-lg font-bold">{<Logo/>}</div>
-        <div className="flex items-center space-x-6">
+      <header className="flex flex-col sm:flex-row justify-between items-center px-4 py-4 text-sm border-b border-gray-800">
+        <div className="text-lg font-bold">{<Logo />}</div>
+        <div className="flex items-center space-x-4 mt-4 sm:mt-0">
           {/* Search Bar */}
           <div className="relative shadow-lg">
-          <span className="absolute left-2 top-2 text-gray-500">
+            <span className="absolute left-2 top-2 text-gray-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4"
@@ -103,9 +103,8 @@ const Login = () => {
             <input
               type="text"
               placeholder="type anything"
-              className="px-0 pl-16 py-2 bg-transparent border-b border-white text-white italic outline-none placeholder-gray-0 focus:ring-0 focus:ring-gray-0"
+              className="pl-8 py-2 bg-transparent border-b border-white text-white italic outline-none placeholder-gray-500 focus:ring-0 focus:ring-gray-0"
             />
-          
           </div>
           <a href="#" className="text-gray-400 hover:underline">
             For Enterprise
@@ -114,39 +113,33 @@ const Login = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex flex-col items-center justify-center flex-grow px-4">
+      <main className="flex flex-col items-center justify-center flex-grow px-4 sm:px-6">
         {/* Title */}
-        <h1 className="text-3xl text-center mb-8 font-light border-b w-full pb-9 border-gray-800">
+        <h1 className="text-2xl sm:text-3xl text-center mb-6 font-light border-b w-full pb-6 border-gray-800">
           “The safest <span className="font-bold italic">social network</span>{" "}
           in the universe”
         </h1>
-        
 
         {/* Login Card */}
-        <div className="p-6 py-11 bg-opacity-10 bg-gray-400 backdrop-blur-md rounded-3xl shadow-2xl  border-gray-600 w-full max-w-sm">
-          <h3 className="text-xl font-bold mb-6 text-center">UNICORD®</h3>
+        <div className="p-4 sm:p-6 bg-opacity-10 bg-gray-400 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-600 w-full max-w-sm">
+          <h3 className="text-lg sm:text-xl font-bold mb-4 text-center">UNICORD®</h3>
 
-          <form
-            onSubmit={handleLogin}
-            className="w-full space-y-4  text-center"
-          >
+          <form onSubmit={handleLogin} className="w-full space-y-4 text-center">
             <input
               type="email"
               placeholder="Username"
               value={email}
               onChange={(e) => checkDomain(e.target.value)}
-              className="w-full px-4 py-2 bg-opacity-10 bg-gray-400 text-white rounded-full outline-none   focus:ring-0 focus:ring-gray-500 shadow-md"
+              className="w-full px-4 py-2 bg-opacity-10 bg-gray-400 text-white rounded-full outline-none focus:ring-0 shadow-md"
               required
             />
-            {error && (
-              <p className="text-yellow-500 text-xs mt-1">{error}</p>
-            )}
+            {error && <p className="text-yellow-500 text-xs mt-1">{error}</p>}
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 bg-opacity-10 bg-gray-400 text-white rounded-full outline-none   focus:ring-0 focus:ring-gray-500 shadow-md"
+              className="w-full px-4 py-2 bg-opacity-10 bg-gray-400 text-white rounded-full outline-none focus:ring-0 shadow-md"
               required
             />
             <div className="text-right">
@@ -158,7 +151,7 @@ const Login = () => {
             {/* Login Button */}
             <button
               type="submit"
-              className="w-1/2 m-auto  px-4 py-2 bg-opacity-10 bg-gray-400 text-white rounded-full outline-none   focus:ring-0 focus:ring-gray-500 shadow-md"
+              className="w-full sm:w-1/2 mx-auto px-4 py-2 bg-opacity-10 bg-gray-400 text-white rounded-full outline-none focus:ring-0 shadow-md"
             >
               Login
             </button>
