@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { Logo } from "@/components";
 
 const Login = () => {
   const router = useRouter();
@@ -79,7 +80,7 @@ const Login = () => {
     <div className="flex flex-col justify-between min-h-screen bg-black text-white">
       {/* Header */}
       <header className="flex justify-between items-center px-6 py-4 text-sm border-b border-gray-800">
-        <div className="text-lg font-bold">UNICORD®</div>
+        <div className="text-lg font-bold">{<Logo/>}</div>
         <div className="flex items-center space-x-6">
           {/* Search Bar */}
           <div className="relative shadow-lg">

@@ -14,6 +14,8 @@ import ChatSidebar from "./chatComps/ChatSidebar";
 import ChatWindow from "./chatComps/ChatWindow";
 import ChatInput from "./chatComps/ChatInput";
 
+import Logo from "./Logo";
+
 
 export {
   Login,
@@ -30,6 +32,7 @@ export {
   ChatContainer,
   ChatSidebar,
   ChatWindow,
-  ChatInput
+  ChatInput,
+  Logo
   
 };
