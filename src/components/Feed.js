@@ -15,12 +15,12 @@ const Feed = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
 
       {/* Navbar */}
-      <nav className="w-full flex items-center justify-between px-10 py-4 bg-black/70 relative z-10 border-b border-gray-500">
+      <nav className="w-full flex flex-wrap items-center justify-between px-4 md:px-10 py-4 bg-black/70 relative z-10 border-b border-gray-500">
         {/* Logo */}
         <div className="text-lg font-bold">UNICORD®</div>
 
         {/* Links */}
-        <ul className="flex space-x-6 text-sm font-medium">
+        <ul className="hidden md:flex space-x-6 text-sm font-medium">
           <li>
             <a href="#products" className="hover:underline">
               Products
@@ -48,8 +48,32 @@ const Feed = () => {
           </li>
         </ul>
 
+        {/* Mobile Menu */}
+        <div className="md:hidden flex items-center">
+          <button
+            className="text-gray-500 focus:outline-none"
+            aria-label="Toggle navigation"
+          >
+            {/* Mobile menu icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </div>
+
         {/* Search Bar */}
-        <div className="relative shadow-lg">
+        <div className="relative mt-4 md:mt-0">
           <span className="absolute left-2 top-2 text-gray-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,14 +93,16 @@ const Feed = () => {
           <input
             type="text"
             placeholder="type anything"
-            className="pl-8 py-2 bg-transparent border-b border-white text-white italic outline-none placeholder-gray-500 focus:ring-0 focus:ring-gray-0"
+            className="pl-8 py-2 bg-transparent border-b border-white text-white italic outline-none placeholder-gray-500 focus:ring-0 focus:ring-gray-0 w-full max-w-xs"
           />
         </div>
 
         {/* Actions */}
-        <div className="flex space-x-4">
-          <Link className="hover:underline text-sm" href={'/login'}> Sign in </Link>
-          
+        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-4 md:mt-0">
+          <Link className="hover:underline text-sm" href={"/login"}>
+            Sign in
+          </Link>
+
           <a href="#enterprise" className="hover:underline text-sm">
             For Enterprise
           </a>
@@ -84,19 +110,19 @@ const Feed = () => {
       </nav>
 
       {/* Main Content */}
-      <div className="flex-grow flex flex-col justify-center items-center relative z-10">
+      <div className="flex-grow flex flex-col justify-center items-center relative z-10 px-4 sm:px-6 md:px-8">
         <div className="w-full h-[88vh] max-w-[1300px] flex flex-col justify-between">
           <div>
             <div
               style={{
                 fontWeight: 100,
               }}
-              className="text-5xl font-thin inter pt-16 text-gray-300"
+              className="text-3xl sm:text-4xl md:text-5xl font-thin inter pt-16 text-gray-300 text-center md:text-left"
             >
               Redefining <span className="text-white font-bold">Education</span>
             </div>
             <div>
-              <p className="text-gray-500 italic">
+              <p className="text-gray-500 italic text-center md:text-left mt-2">
                 the social network for universities
               </p>
             </div>
@@ -105,7 +131,7 @@ const Feed = () => {
           <div></div>
           <div className="text-center flex flex-col items-center">
             <Logo />
-            <p className="text-sm font-light mb-6 text-gray-500">
+            <p className="text-sm font-light mb-6 text-gray-500 text-center">
               The Safest Universal Social Connection
             </p>
           </div>
