@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import '@fontsource/inter';
+
 
 const geistSans = localFont({
   src: "./fonts/Poppins/Poppins-Regular.ttf",
@@ -26,7 +28,7 @@ export default function RootLayout({ children }) {
     <html  lang="en">
       <head></head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
       >
          <ToastContainer />
         {children}

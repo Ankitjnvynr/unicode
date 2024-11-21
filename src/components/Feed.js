@@ -1,163 +1,119 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import React from "react";
+import { Logo } from "@/components";
+import Link from "next/link";
 
-function Feed() {
-
-  
-  const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const [userData, setUserData] = useState(null);
-
-
-  useEffect(() => {
-    router.push("/dashboard");
-      
-    // const token = localStorage.getItem("authToken");
-    // if (token) {
-    //   router.push("/dashboard");
-    // } else {
-    //   router.push("/login");
-    //   setLoading(false);
-    // }
-  }, );
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("authToken");
-  //   const email = localStorage.getItem("userEmail");
-
-  //   if (token && email) {
-  //     setUserData(email); // Set user email
-  //     setLoading(false); // Stop loading if user is authenticated
-  //   } else {
-  //     router.push("/login"); // Redirect to login if not authenticated
-  //   }
-  // }, [router]);
-
-
-
-
-
-
-
-  
-  const handleLogout = () => {
-    if (confirm('are you sure ?')){
-        localStorage.removeItem("authToken"); // Remove the token from localStorage
-        localStorage.removeItem("userEmail"); // Remove user email from localStorage
-        router.push("/login"); // Redirect to login page
-    }
-    
-  };
-
-  const posts = [
-    {
-      id: 1,
-      username: "John Doe",
-      content: "Just went on a great hike today! The view was amazing!",
-      timestamp: "2 hours ago",
-    },
-    {
-      id: 2,
-      username: "Jane Smith",
-      content: "Loving the new features on this platform!",
-      timestamp: "5 hours ago",
-    },
-    {
-      id: 3,
-      username: "Michael Johnson",
-      content: "Had a wonderful dinner with family.",
-      timestamp: "1 day ago",
-    },
-  ];
-
-  // Show nothing if loading is true
-  if (loading) return null;
-
+const Feed = () => {
   return (
-    <div style={styles.feedContainer}>
-      <div style={styles.header}>
-        <h2 style={styles.feedTitle}>Feed</h2>
-        <button onClick={handleLogout} style={styles.logoutButton}>
-          Logout
-        </button>
-      </div>
-      <div style={styles.welcomeMessage}>
-        <h3>Welcome, <span className="text-blue-800">{userData}</span></h3>
-      </div>
-      <div style={styles.postsContainer}>
-        {posts.map((post) => (
-          <div key={post.id} style={styles.post}>
-            <div style={styles.postHeader}>
-              <strong>{post.username}</strong>
-              <span style={styles.timestamp}>{post.timestamp}</span>
+    <div
+      className="w-screen overflow-x-hidden h-screen flex flex-col bg-black text-white bg-cover bg-center relative"
+      style={{
+        backgroundImage:
+          "url('/images/2109.png'), radial-gradient(circle at top, rgba(0, 0, 0, 0.7), transparent 70%)",
+      }}
+    >
+      {/* Bottom Shadow Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
+
+      {/* Navbar */}
+      <nav className="w-full flex items-center justify-between px-10 py-4 bg-black/70 relative z-10 border-b border-gray-500">
+        {/* Logo */}
+        <div className="text-lg font-bold">UNICORD®</div>
+
+        {/* Links */}
+        <ul className="flex space-x-6 text-sm font-medium">
+          <li>
+            <a href="#products" className="hover:underline">
+              Products
+            </a>
+          </li>
+          <li>
+            <a href="#build" className="hover:underline">
+              Build
+            </a>
+          </li>
+          <li>
+            <a href="#ai" className="hover:underline">
+              AI
+            </a>
+          </li>
+          <li>
+            <a href="#company" className="hover:underline">
+              Company
+            </a>
+          </li>
+          <li>
+            <a href="#uniprog" className="hover:underline">
+              Uniprog
+            </a>
+          </li>
+        </ul>
+
+        {/* Search Bar */}
+        <div className="relative shadow-lg">
+          <span className="absolute left-2 top-2 text-gray-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-4.35-4.35m1.9-5.4a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z"
+              />
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder="type anything"
+            className="pl-8 py-2 bg-transparent border-b border-white text-white italic outline-none placeholder-gray-500 focus:ring-0 focus:ring-gray-0"
+          />
+        </div>
+
+        {/* Actions */}
+        <div className="flex space-x-4">
+          <Link className="hover:underline text-sm" href={'/login'}> Sign in </Link>
+          
+          <a href="#enterprise" className="hover:underline text-sm">
+            For Enterprise
+          </a>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="flex-grow flex flex-col justify-center items-center relative z-10">
+        <div className="w-full h-[88vh] max-w-[1300px] flex flex-col justify-between">
+          <div>
+            <div
+              style={{
+                fontWeight: 100,
+              }}
+              className="text-5xl font-thin inter pt-16 text-gray-300"
+            >
+              Redefining <span className="text-white font-bold">Education</span>
             </div>
-            <p style={styles.postContent}>{post.content}</p>
+            <div>
+              <p className="text-gray-500 italic">
+                the social network for universities
+              </p>
+            </div>
           </div>
-        ))}
+
+          <div></div>
+          <div className="text-center flex flex-col items-center">
+            <Logo />
+            <p className="text-sm font-light mb-6 text-gray-500">
+              The Safest Universal Social Connection
+            </p>
+          </div>
+        </div>
+        <div></div>
       </div>
     </div>
   );
-}
-
-const styles = {
-  feedContainer: {
-    width: "100%",
-    maxWidth: "600px",
-    margin: "0 auto",
-    padding: "20px",
-    backgroundColor: "#f9f9f9",
-    borderRadius: "8px",
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-  },
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "20px",
-  },
-  feedTitle: {
-    fontSize: "24px",
-    fontWeight: "bold",
-  },
-  logoutButton: {
-    padding: "8px 16px",
-    backgroundColor: "#ff4d4f",
-    color: "#fff",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    fontSize: "14px",
-  },
-  welcomeMessage: {
-    marginBottom: "20px",
-    fontSize: "18px",
-    color: "#333",
-  },
-  postsContainer: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-  },
-  post: {
-    backgroundColor: "#fff",
-    padding: "15px",
-    borderRadius: "8px",
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-  },
-  postHeader: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "10px",
-  },
-  timestamp: {
-    fontSize: "12px",
-    color: "#777",
-  },
-  postContent: {
-    fontSize: "16px",
-    color: "#333",
-  },
 };
 
 export default Feed;

@@ -21,12 +21,9 @@ export default function DashLayout({ children }) {
 
   return (
     <div
-      className="min-h-screen bg-gray-900 text-white relative overflow-hidden"
-      onMouseMove={handleMouseMove}
-      style={{
-        backgroundImage: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, rgba(70, 130, 180, 0.08), rgba(0, 0, 0, 1))`,
-        transition: "background 10s ease",
-      }}
+      className="min-h-screen bg-black  text-white relative overflow-hidden"
+      
+      
     >
       {loading ? (
         <div className="flex items-center justify-center min-h-screen">
