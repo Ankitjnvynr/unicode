@@ -13,6 +13,7 @@ import ChatContainer from "./chatComps/ChatContainer";
 import ChatSidebar from "./chatComps/ChatSidebar";
 import ChatWindow from "./chatComps/ChatWindow";
 import ChatInput from "./chatComps/ChatInput";
+import Header from "./Header";
 
 import Logo from "./Logo";
 
@@ -33,6 +34,7 @@ export {
   ChatSidebar,
   ChatWindow,
   ChatInput,
-  Logo
+  Logo,
+  Header
   
 };
