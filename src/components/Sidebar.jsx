@@ -6,6 +6,7 @@ import { FiHome, FiImage } from "react-icons/fi";
 import { FaRegUser, FaSearch } from "react-icons/fa";
 import { FaRegMessage } from "react-icons/fa6";
 import Link from "next/link";
+import { RiMessageLine } from "react-icons/ri";
 
 import { BsCalendar2Event } from "react-icons/bs";
 import { TbLogout } from "react-icons/tb";
@@ -41,7 +42,7 @@ const Sidebar = () => {
     },
     {
       path: "/dashboard/messages",
-      icon: <FaRegMessage fontSize={20} fontWeight={1} />,
+      icon: <RiMessageLine  fontSize={20} fontWeight={1} />,
       label: "Messages",
     },
     { path: "/dashboard/events", icon: <BsCalendar2Event />, label: "Events" },
