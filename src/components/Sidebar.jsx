@@ -90,7 +90,7 @@ const Sidebar = () => {
               <Link
                 key={index}
                 href={item.path}
-                className={`w-full flex items-center p-2 gap-3 text-sm ${isActive(
+                className={`w-full flex items-center p-2 hover:bg-gray-900 hover:rounded-lg duration-500 gap-3 text-sm ${isActive(
                   item.path
                 )}`}
               >
