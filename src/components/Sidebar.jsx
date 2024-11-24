@@ -59,7 +59,7 @@ const Sidebar = () => {
       : "";
   const isActiveMobile = (path) =>
     pathname === path
-      ? " p-2 text-white text-bold rounded-lg border rounded rounded-full"
+      ? " p-2 text-white text-bold"
       : "";
 
   const handleLogout = () => {
@@ -143,7 +143,7 @@ const Sidebar = () => {
           <Link
             key={index}
             href={item.path}
-            className={`flex flex-col items-center ${isActiveMobile(
+            className={`flex text-gray-500 flex-col items-center ${isActiveMobile(
               item.path
             )}`}
           >
