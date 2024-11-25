@@ -112,28 +112,28 @@ const Sidebar = () => {
             </span>
           </button>
         </div>
-        <div className="border-t border-gray-500 grid grid-cols-3 text-center pt-2">
-          <Link href={"#"} className="text-sm text-gray-300">
+        <div className="border-t border-gray-500 grid grid-cols-3 text-center pt-2 text-[13px]">
+          <Link href={"#"} className=" text-gray-500">
             Help
           </Link>
-          <Link href={"#"} className="text-sm text-gray-300">
+          <Link href={"#"} className=" text-gray-500">
             Press
           </Link>
-          <Link href={"#"} className="text-sm text-gray-300">
+          <Link href={"#"} className=" text-gray-500">
             Careers
           </Link>
-          <Link href={"#"} className="text-sm text-gray-300">
+          <Link href={"#"} className=" text-gray-500">
             About
           </Link>
-          <Link href={"#"} className="text-sm text-gray-300">
+          <Link href={"#"} className=" text-gray-500">
             Whitepaper
           </Link>
-          <Link href={"#"} className="text-sm text-gray-300">
+          <Link href={"#"} className=" text-gray-500">
             Terms
           </Link>
         </div>
-        <div className="text-center text-gray-300 font-thin text-sm px-2">
-          All rights reserved UNICORD® 2024
+        <div className="text-center text-gray-500 font-thin text-[13px] px-2">
+          All rights reserved <span className="text-white" >UNICORD®</span> 2024
         </div>
       </div>
 
