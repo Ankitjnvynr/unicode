@@ -7,6 +7,10 @@ import { FaRegUser, FaSearch } from "react-icons/fa";
 import { RiMessageLine } from "react-icons/ri";
 import { BsCalendar2Event } from "react-icons/bs";
 import { TbLogout } from "react-icons/tb";
+import { MdOutlineAutoGraph } from "react-icons/md";
+import { WiDirectionRight } from "react-icons/wi";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { MdOutlineExplore } from "react-icons/md";
 import Link from "next/link";
 import { Logo } from ".";
 
@@ -49,13 +53,13 @@ const Sidebar = () => {
   // Sidebar menu items
   const menuItems = [
     { path: "/dashboard", icon: <FiHome fontSize={20} />, label: "Home" },
-    { path: "/dashboard/gallery", icon: <FiHome fontSize={20} />, label: "Explore" },
-    { path: "/dashboard/gallery", icon: <FiHome fontSize={20} />, label: "Add" },
+    { path: "/dashboard/gallery", icon: <MdOutlineExplore fontSize={20}  />, label: "Explore" },
+    { path: "/dashboard/gallery", icon: <IoIosAddCircleOutline fontSize={20}  />, label: "Add" },
     { path: "/dashboard/events", icon: <BsCalendar2Event />, label: "Events" },
-    { path: "/dashboard/events", icon: <FiHome fontSize={20} />, label: "Stratups" },
-    { path: "/dashboard/gallery", icon: <FiHome fontSize={20} />, label: "Direct" },
+    { path: "/dashboard/events", icon:<MdOutlineAutoGraph />, label: "Stratups" },
+    // { path: "/dashboard/gallery", icon: <WiDirectionRight  fontSize={20} />, label: "Direct" },
     // { path: "/dashboard/gallery", icon: <FiImage fontSize={20} />, label: "Gallery" },
-    { path: "/dashboard/messages", icon: <RiMessageLine fontSize={20} />, label: "Messages" },
+    { path: "/dashboard/messages", icon: <RiMessageLine fontSize={20} />, label: "Direct" },
     { path: "/dashboard/profile", icon: <FaRegUser fontSize={20} />, label: "Profile" },
   ];
 
