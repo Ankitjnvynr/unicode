@@ -76,12 +76,12 @@ const Sidebar = () => {
           <Logo />
           <p>Dubai</p>
         </div>
-        <div className="relative">
+        <div className="relative ml-2">
           <FaSearch className="translate-y-5" />
           <input
             placeholder={searchPlaceholder}
             type="text"
-            className="w-full text-white bg-transparent outline-none font-thin border-b italic border-gray-500 pl-5 "
+            className="w-[80%]  text-white bg-transparent outline-none font-thin border-b italic border-gray-500 pl-5 "
           />
         </div>
         <div className="flex flex-col h-full w-full px-1 gap-4 justify-between pt-5 ">

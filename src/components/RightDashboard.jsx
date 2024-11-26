@@ -54,7 +54,7 @@ const RightDashboard = () => {
 
       {/* Suggested Accounts Section */}
       <div className="p-4 flex-grow overflow-y-scroll scrollbar-hide">
-        <h2 className="text-lg font-semibold mb-4">Suggested Accounts</h2>
+        <h2 className="text-lg font-sm mb-4">Suggested Accounts</h2>
         <ul className="space-y-4">
           {suggestedAccounts.map((account) => (
             <li key={account.id} className="flex items-center space-x-4">
