@@ -36,7 +36,7 @@ export default function Page() {
           <PostContainer/>
         </div>
       </div>
-      <div className=" h-full  bg-[#1B1B1B] border-l border-gray-500 ">
+      <div className="hide md:block h-full  bg-[#1B1B1B] border-l border-gray-500 ">
         <RightDashboard />
       </div>
     </div>
