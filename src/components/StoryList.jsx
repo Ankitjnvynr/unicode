@@ -28,7 +28,7 @@ const StoryList = () => {
   };
 
   return (
-    <div className="flex overflow-x-auto space-x-6 py-1 scrollbar-hide">
+    <div className="flex max-w-screen overflow-x-auto space-x-6 py-1 scrollbar-hide">
       {storyState.map((story) => (
         <div
           key={story.id}
