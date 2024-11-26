@@ -16,6 +16,8 @@ import ChatInput from "./chatComps/ChatInput";
 import Header from "./Header";
 
 import Logo from "./Logo";
+import StoryList from "./StoryList";
+import RightDashboard from "./RightDashboard";
 
 
 export {
@@ -35,6 +37,8 @@ export {
   ChatWindow,
   ChatInput,
   Logo,
-  Header
+  Header,
+  StoryList,
+  RightDashboard
   
 };

@@ -36,7 +36,7 @@ export default function DashLayout({ children }) {
             <div className="min-w-[220px]  ">
               <Sidebar />
             </div>
-            <div className="flex-1 p-1 pb-16 md:pb-2 md:p-2  overflow-auto pt-10  overflow-y-auto  h-[100%]  ">{children}</div>
+            <div className="flex-1 p-0 pb-16 md:pb-2 md:p-0  overflow-auto  overflow-y-auto  h-[100%]  ">{children}</div>
           </div>
         </div>
       )}

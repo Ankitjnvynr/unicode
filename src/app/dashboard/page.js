@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { RightDashboard, StoryList } from "@/components";
 
 export default function Page() {
   const [loading, setLoading] = useState(false); // Loading state
@@ -23,5 +24,17 @@ export default function Page() {
     return <div>Loading...</div>;
   }
 
-  return <div>Page</div>;
+  return (
+    <div className=" h-full flex">
+      <div className=" flex-1">
+        <div className="p-2 py-3 h-50 bg-[#1B1B1B] ">
+          <StoryList />
+        </div>
+        <div>hello</div>
+      </div>
+      <div className=" h-full  bg-[#1B1B1B]  ">
+        <RightDashboard />
+      </div>
+    </div>
+  );
 }
