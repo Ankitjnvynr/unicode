@@ -18,6 +18,7 @@ import Header from "./Header";
 import Logo from "./Logo";
 import StoryList from "./StoryList";
 import RightDashboard from "./RightDashboard";
+import PostContainer from "./PostContainer";
 
 
 export {
@@ -39,6 +40,7 @@ export {
   Logo,
   Header,
   StoryList,
-  RightDashboard
+  RightDashboard,
+  PostContainer
   
 };

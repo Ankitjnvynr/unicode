@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { RightDashboard, StoryList } from "@/components";
+import { PostContainer, RightDashboard, StoryList } from "@/components";
 
 export default function Page() {
   const [loading, setLoading] = useState(false); // Loading state
@@ -27,10 +27,14 @@ export default function Page() {
   return (
     <div className=" h-full flex">
       <div className=" flex-1">
-        <div className="p-2 py-3 h-50 bg-[#1B1B1B] border-b border-gray-500 ">
+        <div className="p-2 py-3 h-32 bg-[#1B1B1B] border-b border-gray-500 ">
           <StoryList />
         </div>
-        <div>hello</div>
+        <div style={{
+         height:"calc(100vh - 9rem)"
+        }} className="overflow-y-auto">
+          <PostContainer/>
+        </div>
       </div>
       <div className=" h-full  bg-[#1B1B1B] border-l border-gray-500 ">
         <RightDashboard />
