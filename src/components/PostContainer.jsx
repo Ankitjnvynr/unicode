@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 
 // Dummy placeholder image URL
@@ -7,19 +8,19 @@ const placeholderImage = 'https://via.placeholder.com/150';
 const postsData = [
   {
     id: 1,
-    username: 'the_best_motivation_14',
+    username: 'Abc',
     profilePic: placeholderImage, // Placeholder for profile picture
     isVerified: true,
     postType: 'image',
     content: placeholderImage, // Placeholder for post image
-    caption: 'झुकने में ही गर्व है। ❤️🙏',
+    caption: 'Abc',
     likes: 47229,
     commentsCount: 289,
     timestamp: '1d',
   },
   {
     id: 2,
-    username: 'inspiration_daily',
+    username: 'ABC',
     profilePic: placeholderImage,
     isVerified: false,
     postType: 'video',

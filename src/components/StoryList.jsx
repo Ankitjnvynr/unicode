@@ -2,16 +2,19 @@
 "use client"
 import React, { useState } from 'react';
 
+const placeholderImage = 'https://via.placeholder.com/150';
+
 const stories = [
-  { id: 1, name: 'A', image: 'path-to-image1.jpg', viewed: false },
-  { id: 2, name: 'B', image: 'path-to-image2.jpg', viewed: false },
-  { id: 3, name: 'C', image: 'path-to-image3.jpg', viewed: true },
-  { id: 4, name: 'D', image: 'path-to-image4.jpg', viewed: true },
-  { id: 5, name: 'E', image: 'path-to-image5.jpg', viewed: false },
-  { id: 6, name: 'F', image: 'path-to-image6.jpg', viewed: true },
-  { id: 7, name: 'G', image: 'path-to-image7.jpg', viewed: false },
-  { id: 8, name: 'H', image: 'path-to-image8.jpg', viewed: true },
+  { id: 1, name: 'A', image: placeholderImage, viewed: false },
+  { id: 2, name: 'B', image: placeholderImage, viewed: false },
+  { id: 3, name: 'C', image: placeholderImage, viewed: true },
+  { id: 4, name: 'D', image: placeholderImage, viewed: true },
+  { id: 5, name: 'E', image: placeholderImage, viewed: false },
+  { id: 6, name: 'F', image: placeholderImage, viewed: true },
+  { id: 7, name: 'G', image: placeholderImage, viewed: false },
+  { id: 8, name: 'H', image: placeholderImage, viewed: true },
 ];
+
 
 const StoryList = () => {
   const [storyState, setStoryState] = useState(stories);

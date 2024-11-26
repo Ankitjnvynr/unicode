@@ -9,13 +9,16 @@ const RightDashboard = () => {
   useEffect(() => {
     const fetchSuggestedAccounts = async () => {
       // Simulating a backend API call
+      const placeholderImage = 'https://via.placeholder.com/150';
+
       const fetchedAccounts = [
-        { id: 1, name: 'john_doe', image: 'path-to-image1.jpg' },
-        { id: 2, name: 'jane_smith', image: 'path-to-image2.jpg' },
-        { id: 3, name: 'alex_king', image: 'path-to-image3.jpg' },
-        { id: 4, name: 'linda_brown', image: 'path-to-image4.jpg' },
-        { id: 5, name: 'chris_lee', image: 'path-to-image5.jpg' },
+        { id: 1, name: 'john_doe', image: placeholderImage },
+        { id: 2, name: 'jane_smith', image: placeholderImage },
+        { id: 3, name: 'alex_king', image: placeholderImage },
+        { id: 4, name: 'linda_brown', image: placeholderImage },
+        { id: 5, name: 'chris_lee', image: placeholderImage },
       ];
+      
 
       setSuggestedAccounts(fetchedAccounts);
     };
