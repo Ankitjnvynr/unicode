@@ -65,7 +65,7 @@ const Sidebar = () => {
 
   const isActive = (path) =>
     pathname === path
-      ? "bg-gray-900 text-white rounded-lg border-l md:border-none"
+      ? "bg-[#1b1b1b] text-white rounded-lg border-l md:border-none"
       : "";
 
   const isActiveMobile = (path) =>
@@ -102,7 +102,7 @@ const Sidebar = () => {
               <Link
                 key={index}
                 href={item.path}
-                className={`w-full flex items-center p-2 hover:bg-gray-900 hover:rounded-lg duration-500 gap-3 text-sm ${isActive(
+                className={`w-full flex items-center p-2 hover:bg-[#1b1b1b] hover:rounded-lg duration-500 gap-3 text-sm ${isActive(
                   item.path
                 )}`}
               >

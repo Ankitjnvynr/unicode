@@ -9,7 +9,7 @@ const RightDashboard = () => {
   useEffect(() => {
     const fetchSuggestedAccounts = async () => {
       // Simulating a backend API call
-      const placeholderImage = 'https://via.placeholder.com/150';
+      const placeholderImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTadoo9vMoUp-gpiYvACud6oHMkQCQMtTrRhPnidw2EygNgaN_J_LGkrg9L3R4F2WW2-iU&usqp=CAU';
 
       const fetchedAccounts = [
         { id: 1, name: 'john_doe', image: placeholderImage },
@@ -57,7 +57,7 @@ const RightDashboard = () => {
 
       {/* Suggested Accounts Section */}
       <div className="p-4 flex-grow overflow-y-scroll scrollbar-hide">
-        <h2 className="text-lg font-sm mb-4">Suggested Accounts</h2>
+        <h2 className="text-sm mb-4 text-gray-400">Suggested Accounts</h2>
         <ul className="space-y-4">
           {suggestedAccounts.map((account) => (
             <li key={account.id} className="flex items-center space-x-4">

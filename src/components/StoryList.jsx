@@ -2,7 +2,7 @@
 "use client"
 import React, { useState } from 'react';
 
-const placeholderImage = 'https://via.placeholder.com/150';
+const placeholderImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTadoo9vMoUp-gpiYvACud6oHMkQCQMtTrRhPnidw2EygNgaN_J_LGkrg9L3R4F2WW2-iU&usqp=CAU';
 
 const stories = [
   { id: 1, name: 'A', image: placeholderImage, viewed: false },
@@ -37,7 +37,7 @@ const StoryList = () => {
         >
           <div
             className={`w-16 h-16 rounded-full border-2 overflow-hidden ${
-              story.viewed ? 'border-gray-500' : 'border-pink-500'
+              story.viewed ? 'border-gray-500' : 'border-gray-500'
             }`}
           >
             <img

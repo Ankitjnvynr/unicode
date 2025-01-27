@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 
 // Dummy placeholder image URL
-const placeholderImage = 'https://via.placeholder.com/150';
+const placeholderAvtar = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTadoo9vMoUp-gpiYvACud6oHMkQCQMtTrRhPnidw2EygNgaN_J_LGkrg9L3R4F2WW2-iU&usqp=CAU';
+const placeholderImage = 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
 
 // Posts data array
 const postsData = [
   {
     id: 1,
     username: 'Abc',
-    profilePic: placeholderImage, // Placeholder for profile picture
+    profilePic: placeholderAvtar, // Placeholder for profile picture
     isVerified: true,
     postType: 'image',
     content: placeholderImage, // Placeholder for post image
@@ -21,7 +22,7 @@ const postsData = [
   {
     id: 2,
     username: 'ABC',
-    profilePic: placeholderImage,
+    profilePic: placeholderAvtar,
     isVerified: false,
     postType: 'video',
     content: placeholderImage, // Placeholder for post video
@@ -33,7 +34,7 @@ const postsData = [
   {
     id: 3,
     username: 'daily_quotes',
-    profilePic: placeholderImage,
+    profilePic: placeholderAvtar,
     isVerified: false,
     postType: 'image',
     content: placeholderImage, // Another placeholder for image
@@ -60,7 +61,7 @@ const PostContainer = () => {
       {posts.map((post) => (
         <div
           key={post.id}
-          className="w-full max-w-lg bg-gray-900 text-white rounded-lg overflow-hidden shadow-lg"
+          className="w-full max-w-lg bg-[#1b1b1b] text-white rounded-lg overflow-hidden shadow-lg"
         >
           {/* Header */}
           <div className="flex items-center px-4 py-3 border-b border-gray-800">
@@ -73,7 +74,7 @@ const PostContainer = () => {
               <div className="flex items-center space-x-1">
                 <p className="font-bold">{post.username}</p>
                 {post.isVerified && (
-                  <span className="text-blue-500 text-xs">✔️</span>
+                  <span className="text-blue-500 text-xs"></span>
                 )}
               </div>
               <p className="text-xs text-gray-400">{post.timestamp}</p>
@@ -129,7 +130,10 @@ const PostContainer = () => {
             <input
               type="text"
               placeholder="Add a comment..."
-              className="w-full bg-gray-800 text-white p-2 rounded-lg focus:outline-none"
+              className="w-full bg-[#1b1b1c] text-gray-400 p-2 rounded-lg focus:outline-none text-sm"
+              style={{
+                fontSize:12
+              }}
             />
           </div>
         </div>

@@ -15,7 +15,7 @@ export default function Header() {
 
   const actionLinks = [
     { label: "Sign in", href: "/login", isExternal: false },
-    { label: "For Enterprise", href: "/enterprise", isExternal: true },
+    { label: "For Enterprise", href: "#enterprise", isExternal: true },
   ];
 
   return (
